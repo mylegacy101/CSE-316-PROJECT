@@ -2,24 +2,19 @@
  
 int main()
 {
-    int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
-    printf("Enter Total Number of Process:");
+    int bt[20],student[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
+    printf("Enter Total Number of Students :");
     scanf("%d",&n);
  
-    printf("\nEnter Burst Time and Priority\n");
+    printf("\nEnter number of gift collected by each student \n");
     for(i=0;i<n;i++)
     {
-        printf("\nP[%d]\n",i+1);
-        printf("Burst Time:");
-        scanf("%d",&bt[i]);
-        printf("Priority:");
+        printf("\nStudent Number[%d]\n",i+1);
+        printf("No of gifts:");
         scanf("%d",&pr[i]);
-        p[i]=i+1;           //contains process number
+        student[i]=i+1;           //contains process number
     }
- 
-    //sorting burst time, priority and process number in ascending order using selection sort
-    for(i=0;i<n;i++)
-    {
+  {
         pos=i;
         for(j=i+1;j<n;j++)
         {
@@ -35,37 +30,15 @@ int main()
         bt[i]=bt[pos];
         bt[pos]=temp;
  
-        temp=p[i];
-        p[i]=p[pos];
-        p[pos]=temp;
-    }
- 
-    wt[0]=0;    //waiting time for first process is zero
- 
-    //calculate waiting time
-    for(i=1;i<n;i++)
-    {
-        wt[i]=0;
-        for(j=0;j<i;j++)
-            wt[i]+=bt[j];
- 
-        total+=wt[i];
-    }
- 
-    avg_wt=total/n;      //average waiting time
-    total=0;
- 
-    printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
+        temp=student[i];
+        student[i]=student[pos];
+        student[pos]=temp;
+       
+          printf("\nAccountant Prefrence in Selecting Student having maximum gift\t %d ",student[0]);
     for(i=0;i<n;i++)
     {
-        tat[i]=bt[i]+wt[i];     //calculate turnaround time
-        total+=tat[i];
-        printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],bt[i],wt[i],tat[i]);
+        printf("\n[%d]\t\t",student[i]);
     }
- 
-    avg_tat=total/n;     //average turnaround time
-    printf("\n\nAverage Waiting Time=%d",avg_wt);
-    printf("\nAverage Turnaround Time=%d\n",avg_tat);
- 
+   
     return 0;
-}
+}}
